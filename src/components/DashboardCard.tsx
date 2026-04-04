@@ -38,7 +38,7 @@ export default function DashboardCard({
 
       <div className="mt-auto z-10">
         <button
-          onClick={onClick}
+          onClick={onClick }
           className={`w-full py-4 px-6 rounded-xl text-white font-semibold ${btnBg}`}
         >
           Enter Dashboard →

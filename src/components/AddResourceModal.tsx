@@ -227,39 +227,27 @@ function AddEntityModal({ config, isOpen, onClose, onSubmit }: any) {
 
 /* ---------------- PAGE ---------------- */
 
-export default function AddResourceModalPage() {
-  const [open, setOpen] = useState(false);
+export function AddResourceModal({ isOpen, onClose }: any) {
   const [config, setConfig] = useState<EntityConfig | null>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      setConfig({
-        title: "Add Study Resource",
-        description: "Generated from DB schema",
-        breadcrumb: "AUTO",
-        primaryAction: "Create",
-        fields: mapDbToFields(MOCK_TABLE_SCHEMA),
-      });
-    }, 500);
+    setConfig({
+      title: "Add Study Resource",
+      description: "Generated from DB schema",
+      breadcrumb: "AUTO",
+      primaryAction: "Create",
+      fields: mapDbToFields(MOCK_TABLE_SCHEMA),
+    });
   }, []);
 
-  if (!config) return <p>Loading...</p>;
+  if (!config || !isOpen) return null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-2 px-8 py-3.5 bg-[#7c2d12] hover:bg-[#991b1b] text-white rounded-xl font-semibold font-sans text-sm transition-all duration-150 shadow-md hover:shadow-lg"
-      >
-       <PlusIcon /> Open Modal
-      </button>
-
-      <AddEntityModal
-        config={config}
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onSubmit={(data: any) => console.log("Submitted:", data)}
-      />
-    </div>
+    <AddEntityModal
+      config={config}
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={(data: any) => console.log(data)}
+    />
   );
 }

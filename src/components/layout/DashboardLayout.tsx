@@ -14,7 +14,7 @@ const DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     id: 'dashboard',
     label: 'Dashboard',
-    path: '/',
+    path: '/dashboards',
     icon: <LayoutDashboard className="w-5 h-5" />,
   },
   {
